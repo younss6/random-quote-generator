@@ -7,6 +7,21 @@ const quotes = [
 ];
 
 function newQuote() {
+  const quoteElement = document.getElementById("quote");
   const index = Math.floor(Math.random() * quotes.length);
-  document.getElementById("quote").textContent = quotes[index];
+  const quote = quotes[index];
+
+  // Typing effect
+  quoteElement.textContent = "";
+  let charIndex = 0;
+
+  function typeCharacter() {
+    if (charIndex < quote.length) {
+      quoteElement.textContent += quote.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeCharacter, 40);
+    }
+  }
+
+  typeCharacter();
 }
